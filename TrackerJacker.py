@@ -45,7 +45,7 @@ class Tracker:
         self.getMongoData = False
         self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"}
         self.details = {"name": "", "price": 0, "deal": True, "url": ""}
-        self.TrackBootTime()    
+        self.TrackBootTime()
     def TrackCovid(self,countryName=''):
         locations = self.covid19.getLocations()
         #print(self.covid19.getLocations())
@@ -129,10 +129,8 @@ class Tracker:
         return self
     def GetHistory(self,ASINData):
         products = self.database["products"]
-        print(products.find_one(),"asdfasdfasdfasdfasdfasdfasd")
         try:
             findProduct = products.find_one({"asin:": ASINData}, {"_id":0})
-            print(findProduct,"asdfasdfasdfasdf")
             if findProduct:
                 return findProduct
         except Exception:
