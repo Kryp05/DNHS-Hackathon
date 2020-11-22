@@ -72,3 +72,7 @@ IDEs:\
  
  ## Application Launcher
  Looks through registry to find all the applications installed and their paths. Shows a window where you can launch the apps. Has an option to sort by several methods. Note that the most/least common sorting does not work. DM @aaguy-hue#9853 on Discord for more information on how it works.
+## Notes 
+how to install mongoDB: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#install-mongodb-community-edition
+
+use as you wish, only make sure that the people allow you to use it since the directory finder may result in a DDOS
