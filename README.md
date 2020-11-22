@@ -58,7 +58,7 @@ if 404 or another version of 404, e.g. 403, it returs false, else, it returns tr
 ## Installer
 Can install a few programs. ONLY WORKS ON WINDOWS OPERATING SYSTEMS. It looks at the registry to find the downloads folder.
 Then it uses the download url, and downloads the file from there into the downloads folder.
-Then, the programs prompts you for whether you want to run the installer that was downloaded
+Then, the programs prompts you for whether you want to run the installer that was downloaded. DM @aaguy-hue#9853 on Discord for more information.
 
 Programs it can install:\
 Web Browsers:\
