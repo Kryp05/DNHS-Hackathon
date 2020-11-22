@@ -69,4 +69,6 @@ IDEs:\
  vscode\
  clion\
  pycharm
-    
+ 
+ ## Application Launcher
+ Looks through registry to find all the applications installed and their paths. Shows a window where you can launch the apps. Has an option to sort by several methods. Note that the most/least common sorting does not work.
