@@ -13,39 +13,50 @@ class Crack:
         self.hashes = hashes
         self.foundLinks=[]
         self.foundHashes=[]
-    def directoryBuster(self,crackType="brute"):
+    def PasswordDehasher(self,crackType="brute"):
         #crack types = brute, dictionary, wordlist
         if crackType=="brute":
-            self.bruteForce(self.numbers,self.lowercase,self.uppercase,self.specialCharacters,self.url)
+            self.passwordBruteForce(self.numbers,self.lowercase,self.uppercase,self.specialCharacters,self.url)
         if crackType=="dictionary":
-            self.dictionary(self.threadNum)
+            self.passwordDictionary(self.threadNum)
         if crackType=="wordlist":
-            self.wordlist(self.threadNum,self.wordlist)
-    def dictionary(self, threads):
-        import nltk
+            self.passwordWordlist(self.threadNum,self.wordlist)
+    def passwordDictionary(self, threads):
         import threading
-        from nltk.corpus import words
-        wordlist  = words.words()
+        wordlist = "lowercase.txt"
+        file = open(wordlist, "r")
+        wordlst = []
+        for i in file.readlines():
+            wordlst.append(i)
+            print(wordlst[-1])
+        wordlist = "uppercase.txt"
+        file = open(wordlist, "r")
+        for i in file.readlines():
+            wordlst.append(i)
+        wordlist  = wordlst
         Wordlist=[]
-        nltk.download()
         currentValue=0
-        for i in range(0,wordlist,threads):
+        for i in range(0,len(wordlist),threads):
             Wordlist.append([])
             for i2 in range(0,threads):
-                Wordlist[i].append(wordlist[i*6+i2])
+                if 116209 > i * threads + i2:
+                    Wordlist[int(i / threads)].append(wordlist[i * threads + i2])
+                else:
+                    i = i
+
         while self.quit == False:
             currentValue+=1
             checkStrings = []
             self.threads=[]
-            for i2 in range(0,Wordlist):
+            for i2 in range(0,len(Wordlist)):
                 for i in Wordlist[i2]:
-                    self.threads.append(threading.Thread(target=self.ping, args=(str(self.website)+str(Wordlist),)))
+                    self.threads.append(threading.Thread(target=self.hash, args=(str(self.website)+str(Wordlist),)))
                     self.threads[-1].start()
                     self.threads[-1].join()
         if (self.quit):
             for i in self.threads:
                 i.join()
-    def wordlist(self, threads,wordlist):
+    def passwordWordlist(self, threads,wordlist):
         import threading
         Wordlist=[]
         currentValue = 0
@@ -59,13 +70,13 @@ class Crack:
             self.threads=[]
             for i2 in range(0,Wordlist):
                 for i in Wordlist[i2]:
-                    self.threads.append(threading.Thread(target=self.ping, args=(str(self.website)+str(Wordlist),)))
+                    self.threads.append(threading.Thread(target=self.hash, args=(str(self.website)+str(Wordlist),)))
                     self.threads[-1].start()
                     self.threads[-1].join()
         if (self.quit):
             for i in self.threads:
                 i.join()
-    def bruteForce(self, threads=1, numbers = True, lowercase = True, uppercase = True, specialCharacters = True, URL = True):
+    def passwordBruteForce(self, threads=1, numbers = True, lowercase = True, uppercase = True, specialCharacters = True, URL = True):
         import threading
         currentValue = 0
         finalString = ""
@@ -97,7 +108,8 @@ class Crack:
                 checkStrings.append(self.getTestString(finalString, currentValue))
             self.threads=[]
             for i in checkStrings:
-                self.threads.append(threading.Thread(target=self.ping, args=(str(self.website)+str(i),)))
+                print(self.Wordlist)
+                self.threads.append(threading.Thread(target=self.hash, args=(str(self.website)+str(i),)))
                 self.threads[-1].start()
                 self.threads[-1].join()
         if (self.quit):
@@ -112,26 +124,40 @@ class Crack:
         if crackType=="wordlist":
             self.wordlist(self.threadNum,self.wordlist)
     def dictionary(self, threads):
-        import nltk
         import threading
-        from nltk.corpus import words
-        wordlist  = words.words()
-        Wordlist=[]
-        nltk.download()
-        currentValue=0
-        for i in range(0,wordlist,threads):
+        wordlist = "lowercase.txt"
+        file = open(wordlist, "r")
+        wordlst = []
+        for i in file.readlines():
+            wordlst.append(i[0:-1])
+        wordlist = "uppercase.txt"
+        file.close()
+        file = open(wordlist, "r")
+        for i in file.readlines():
+            wordlst.append(i[0:-1])
+        file.close()
+        wordlist = wordlst
+        currentValue = 0
+        Wordlist = []
+        for i in range(0, len(wordlist), threads):
             Wordlist.append([])
-            for i2 in range(0,threads):
-                Wordlist[i].append(wordlist[i*6+i2])
+            for i2 in range(0, threads):
+                # print(wordlist[i * threads + i2],i * threads + i2)
+                if 116209 > i * threads + i2:
+                    Wordlist[int(i / threads)].append(wordlist[i * threads + i2])
+                else:
+                    i = i
+
         while self.quit == False:
-            currentValue+=1
+            currentValue += 1
             checkStrings = []
-            self.threads=[]
-            for i2 in range(0,Wordlist):
+            self.threads = []
+            for i2 in range(0, len(Wordlist)):
                 for i in Wordlist[i2]:
-                    self.threads.append(threading.Thread(target=self.ping, args=(str(Wordlist),)))
+                    self.threads.append(threading.Thread(target=self.ping, args=(self.website+(i),)))
                     self.threads[-1].start()
-                    self.threads[-1].join()
+                for i in self.threads:
+                    i.join()
         if (self.quit):
             for i in self.threads:
                 i.join()
@@ -223,9 +249,13 @@ class Crack:
         return list(''.join(list(convertedBase))[::-1])
     def ping(self,website):
         import requests
+        website=str(website)
+        #print("Testing website: "+website)
         try:
             ping = requests.head(website)
-            if int(ping.status_code) == 200:
-                self.foundLinks.append(website)
+            if int(ping.status_code) != 404:
+                if website not in self.foundLinks:
+                    print("Found one link: "+ website)
+                    self.foundLinks.append(website)
         except requests.ConnectionError:
             print('Failed to connect, Try Again')
