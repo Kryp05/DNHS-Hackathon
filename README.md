@@ -62,10 +62,11 @@ Then, the programs prompts you for whether you want to run the installer that wa
 
 **__Programs it can install__**:\
 **Web Browsers**:\
-    chrome\
-    firefox
+    chrome\
+    firefox
 
 **IDEs**:\
-    vscode\
-    clion\
-    pycharm
+    vscode\
+    clion\
+    pycharm
+    
