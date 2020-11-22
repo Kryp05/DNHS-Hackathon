@@ -56,11 +56,16 @@ checks for 404
 if 404 or another version of 404, e.g. 403, it returs false, else, it returns true
 
 ## Installer
+
+**Dependencies**
+wget - pip install wget
+
+**Description**
 Can install a few programs. ONLY WORKS ON WINDOWS OPERATING SYSTEMS. It looks at the registry to find the downloads folder.
 Then it uses the download url, and downloads the file from there into the downloads folder.
 Then, the programs prompts you for whether you want to run the installer that was downloaded. DM @aaguy-hue#9853 on Discord for more information.
 
-Programs it can install:\
+**Programs it can install**:\
 Web Browsers:\
  chrome\
  firefox
@@ -70,8 +75,14 @@ IDEs:\
  clion\
  pycharm
  
- ## Application Launcher
+## Application Launcher
+
+**Dependencies**
+PyQt5 - pip install pyqt5
+
+**Description**
  Looks through registry to find all the applications installed and their paths. Shows a window where you can launch the apps. Has an option to sort by several methods. Note that the most/least common sorting does not work. DM @aaguy-hue#9853 on Discord for more information on how it works.
+
 ## Notes 
 how to install mongoDB: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#install-mongodb-community-edition
 
