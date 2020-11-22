@@ -1,6 +1,7 @@
 import wget
 import winreg
 import os
+import subprocess
 
 downloads_folder = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders", 0, winreg.KEY_READ | winreg.KEY_WOW64_32KEY)
 downloads_folder = winreg.QueryValueEx(downloads_folder, r"{374DE290-123F-4565-9164-39C4925E467B}")[0]
@@ -28,4 +29,14 @@ def installer(app: apptype):
     d = wget.download(urls[app], installFolder)
     return installFolder
 
-print(installer("pycharm"))
+print("""Web Browsers:
+    chrome
+    firefox
+    
+IDEs:
+    vscode
+    clion
+    pycharm""")
+a = installer(input("What would you like to install? "))
+if input("Would you like to run the installer for the app (y/n) ") == "y":
+    subprocess.Popen(a)
