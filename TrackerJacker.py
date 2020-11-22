@@ -45,6 +45,7 @@ class Tracker:
         self.getMongoData = False
         self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"}
         self.details = {"name": "", "price": 0, "deal": True, "url": ""}
+        self.TrackBootTime()    
     def TrackCovid(self,countryName=''):
         locations = self.covid19.getLocations()
         #print(self.covid19.getLocations())
