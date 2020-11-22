@@ -1,6 +1,6 @@
-"# DNHS-Hackathon" 
+# DNHS-Hackathon Team 2
 
-Tracker:
+## Tracker:
 How it works
 Covid Tracker:
 simple, uses a built in package that you can install via os.system('pip install COVID19Py')
@@ -29,7 +29,7 @@ Remove multiple boottimes in case ran multiple times
 Gets average boot time
 returns current vs average boot time
 
-DeHasher:
+## DeHasher:
 3 types
 Brute
 Dictionary
@@ -54,3 +54,18 @@ similar as last except it uses ping instead of hashing the strings
 The ping uses requests.head.status_code to get status code
 checks for 404
 if 404 or another version of 404, e.g. 403, it returs false, else, it returns true
+
+## Installer
+Can install a few programs. ONLY WORKS ON WINDOWS OPERATING SYSTEMS. It looks at the registry to find the downloads folder.
+Then it uses the download url, and downloads the file from there into the downloads folder.
+Then, the programs prompts you for whether you want to run the installer that was downloaded
+
+Programs it can install:
+Web Browsers:
+    chrome
+    firefox
+
+IDEs:
+    vscode
+    clion
+    pycharm
