@@ -63,9 +63,9 @@ Then, the programs prompts you for whether you want to run the installer that wa
 Programs it can install:\
 Web Browsers:\
     chrome\
-    firefox\
+    firefox
 
 IDEs:\
     vscode\
     clion\
-    pycharm\
+    pycharm
