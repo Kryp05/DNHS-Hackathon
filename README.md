@@ -60,12 +60,12 @@ Can install a few programs. ONLY WORKS ON WINDOWS OPERATING SYSTEMS. It looks at
 Then it uses the download url, and downloads the file from there into the downloads folder.
 Then, the programs prompts you for whether you want to run the installer that was downloaded
 
-Programs it can install:\
-Web Browsers:\
+**__Programs it can install__**:\
+**Web Browsers**:\
     chrome\
     firefox
 
-IDEs:\
+**IDEs**:\
     vscode\
     clion\
     pycharm
