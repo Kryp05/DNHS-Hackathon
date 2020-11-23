@@ -11,7 +11,6 @@ from timeit import default_timer as timer
 import sys
 
 global mode
-# mode='c'
 
 time.sleep(0.5)
 screen_coord = (800, 600)
@@ -36,7 +35,6 @@ purple = (138, 43, 226)
 brown = (139, 76, 57)
 
 colors = [red, green, blue, white, pink, yellow, orange, purple, brown]
-paddlecolor = blue # random.choice(colors)
 
 def instructions():
     global mode
@@ -118,7 +116,7 @@ class Ball:
         self.x = screen_coord[0] / 2
         self.y = screen_coord[1] / 2
         self.radius = 13 # 13
-        self.color = yellow #colors[random.randint(0, 8)]
+        self.color = colors[random.randint(0, 8)]
         self.dirchange = 5 # 5
         self.sidedirchange = 60 # 60
         self.defaultSpeed = {'e':200,'m':250,'h':300,'v':350,'p':300,'c':600}[mode] # pixels per sec
@@ -235,7 +233,7 @@ class Paddle:
         self.y = screen_coord[1] / 2 - paddleheight / 2
         self.height = paddleheight
         self.width = paddlewidth
-        self.color = paddlecolor
+        self.color = random.choice(colors)
         self.speed = 600 # 600
         if mode == 'c':
             self.speed = 1000
