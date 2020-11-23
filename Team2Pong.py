@@ -35,6 +35,7 @@ purple = (138, 43, 226)
 brown = (139, 76, 57)
 
 colors = [red, green, blue, white, pink, yellow, orange, purple, brown]
+paddlecolor = random.choice(colors)
 
 def instructions():
     global mode
@@ -47,7 +48,7 @@ def instructions():
            'This code was created using object-oriented programming and pygame. ',
            'Use W and S keys to move left paddle, Up/Down arrows for right paddle. ',
            'You can see scores and total hits of the current round at the top. ',
-           'Use space to reset, Esc key / close to go back to the Code Center. ',
+           'Use space to reset',
            '{c: computer vs computer, p: person vs person',
            'person (right) vs computer (left): e=easy, m=medium, h=hard, v=very hard}',
            'Press the corresponding key from above to play!']
@@ -233,7 +234,7 @@ class Paddle:
         self.y = screen_coord[1] / 2 - paddleheight / 2
         self.height = paddleheight
         self.width = paddlewidth
-        self.color = random.choice(colors)
+        self.color = paddlecolor
         self.speed = 600 # 600
         if mode == 'c':
             self.speed = 1000
@@ -362,8 +363,6 @@ while True:
     else:
         reset = False
     if keys[pygame.K_ESCAPE] or keys[pygame.K_q]:
-        # pygame.quit()
-        # sys.exit()
         lscore, rscore, totalhits = 0, 0, 0
         reset=True
         instructions()
