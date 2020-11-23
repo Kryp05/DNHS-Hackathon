@@ -83,6 +83,14 @@ PyQt5 - pip install pyqt5
 **Description**
 Looks through registry to find all the applications installed and their paths. ONLY WORKS ON WINDOWS OPERATING SYSTEMS. Shows a window where you can launch the apps. Has an option to sort by several methods. Note that the most/least common sorting does not work. DM @aaguy-hue#9853 on Discord for more information on how it works.
 
+## Pong
+
+**Dependencies**
+pygame - pip install pygame
+
+**Description**
+2 paddles. Keep the ball on the screen. AI. Not much more needs to be said. This is a pong game where you can play against another player locally, play against the computer, or chill and watch 2 AI's play against each other.
+
 ## Notes 
 how to install mongoDB: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#install-mongodb-community-edition
 
